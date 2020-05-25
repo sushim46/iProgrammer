@@ -65,8 +65,8 @@
     <div class="container">
       <img src="{% static 'common/jumbo.jpeg'%}" class="bd-placeholder-img rounded-circle" width="140" height="140" >
        <!-- <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"></rect><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>  -->
-      <h1 class="display-4"><span id="typed"></span></h1>
-      <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+      <h1 class="display-4"><b><span id="typed"></b></span></h1>
+      <p class="lead">Tech Blogs, Coding Blogs, Web Development, Python, Django, Flask, JavaScript and Much More</p>
       <p>
         <a href="/blog" class="btn btn-danger custom mx-2 my-2"> <span> Blog </span></a>
       
@@ -79,35 +79,44 @@
 <div class="container text-center my-3">
 
 
-  <section class="jumbotron text-center my-2">
-    <div class="container">
+  <section class="jumbotron text-center my-2" style="background-color: rgb(241, 224, 227), 247, 247); border-radius: 30px;">
+    <div class="container" >
       <h1>Recent Blogs </h1>
-      <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p>
+      <p class="lead">Here are Some Recent Blog Post. Sign Up with iProgrammer to Stay Updated with Latest Tech Blogs</p>
     </div>
   </section>
 
 
   <div class="row my-5">
+  {% for post in featured %}
       <div class="col-lg-4">
-        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"></rect><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
-        <h2>Heading</h2>
-        <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
-        <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
-      </div><!-- /.col-lg-4 -->
-      <div class="col-lg-4">
-        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"></rect><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
-        <h2>Heading</h2>
-        <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
-        <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
-      </div><!-- /.col-lg-4 -->
-      <div class="col-lg-4">
-        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"></rect><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
-        <h2>Heading</h2>
-        <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-        <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
-      </div><!-- /.col-lg-4 -->
-    </div>
+        <img src="{% static 'common/carouselfive.jpg'%}" class="bd-placeholder-img rounded-circle" width="140" height="140">
+        <h2>{{post.title|truncatechars:10}}</h2>
+        <div class="container">
+        <p style="text-align: center;">{{post.content|truncatechars:350}}</p>
+      </div>
+        <p><a class="btn btn-secondary" href="/blog/{{post.slug}}" role="button">View details »</a></p>
+      </div>
+     <!-- /.col-lg-4 -->
+      
+      {%if forloop.counter|divisibleby:3%}
+     
 
+    </div>  <div class="jumbotron jumbotron-fluid" style="background-image: url('https://source.unsplash.com/1600x900/?technology,coding'); border-radius: 30px;">
+      <div class="container">
+        
+        <p>
+          <a href="/blog" class="btn btn-danger custom mx-2 my-2"> <span> Blog </span></a>
+        
+          <a href="/contact" class="btn btn-primary custom  my-2"> <span> Contact</span></a>
+      </p>
+      </div>
+    </div> 
+    
+    <div class="row my-5">
+{%endif%}
+{%endfor%}
+</div>
 </div>
 <div class="typed-strings"></div>
 {% endblock body %}

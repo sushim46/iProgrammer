@@ -1,9 +1,12 @@
 from django.shortcuts import render, HttpResponse
 from .models import Contact
 from django.contrib import messages
+from blog.models import Post
 # Create your views here.
 def home(request):
-    return render(request, 'home/home.html')
+    featured = Post.objects.all()
+    mypost = {'featured':featured}
+    return render(request, 'home/home.html',mypost)
 
 def contact(request):
     messages.success(request,'Fill This Form To Contact Me. ')
