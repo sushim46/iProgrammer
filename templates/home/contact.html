@@ -1,14 +1,10 @@
 {% extends 'base.html' %}
 {% block title %} Contact {% endblock title %} 
-
+{% block contactactive %} active
+{% endblock contactactive %} 
 {% block body %}
 <div class="container my-4 mb-2">
-{% comment %} <div class="alert alert-warning alert-dismissible fade show" id="" role="alert">
-  <strong>Holy guacamole!</strong> You should check in on some of those fields below.
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-</div> {% endcomment %}
+
 <h3>Do You Have Any Query...? Contact Me..!!</h3>
 <form action="/contact" method="post">{% csrf_token %}
   <div class="form-group">
@@ -35,3 +31,12 @@
 
 </div>
 {% endblock body %}
+{% block footer %}
+/contact
+{% endblock footer %}
+{% block social %}
+
+<a href="https://www.facebook.com/sujay.sinha.146" class="fa fa-facebook"></a>
+        <a href="https://www.instagram.com/sujay_sinha02/" class="fa fa-instagram">  </a>
+        <a href="#" class="fa fa-twitter">  </a>
+{% endblock social %}

@@ -1,6 +1,163 @@
 {% extends 'base.html' %}
-{% block title %} About {% endblock title %} 
+{% block title %} About {% endblock title %}
+{% block aboutactive %} active
+{% endblock aboutactive %}
+{% load static %}
+{% block css %}
+.custom {
+    display: inline-block;
+    border-radius: 4px;
+    background-color: #f4511e;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 28px;
+    padding: 20px;
+    width: 200px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+  }
+  
+  .custom span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+  
+  .custom span:after {
+    content: ' \2764 ';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+  }
+  
+  .custom:hover span {
+    padding-right: 25px;
+  }
+  
+  .custom:hover span:after {
+    opacity: 1;
+    right: 0.25;
+  }
+.featurette-image{
+border-radius:100%
+border: 1px solid #a83283;
+  shadow
+  padding: 5px;
+  -moz-box-shadow: 0px 6px 5px #ccc;
+  -webkit-box-shadow: 0px 6px 5px #ccc;
+  box-shadow: 0px 6px 5px #ccc;
+  -moz-border-radius:190px;
+  -webkit-border-radius:190px;
+  border-radius:190px;
+}
+.jumbotron{
+border-radius:50px;
+
+background-image: url('static/common/carouselfive.jpg') ;
+
+background-size: cover;
+}
+
+.custom1{
+font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+font-size: xx-large;
+font-style: normal;
+
+color: rgb(250, 250, 250);
+}
+.fa {
+padding: 20px;
+font-size: 30px;
+width: 27.5%;
+border-radius:100px;
+text-align: center;
+text-decoration: none;
+margin: 5px 5px;
+}
+
+.fa:hover {
+opacity: 0.3;
+}
+.fa-facebook {
+background: #3B5998;
+color: white;
+}
+
+.fa-twitter {
+background: #55ACEE;
+color: white;
+}
+.fa-instagram {
+background: #a83283;
+color: white;
+}
+h3 {
+    text-shadow: 0 0 3px #FF0000;
+  }
+
+{% endblock css %}
 
 {% block body %}
+<div class="container my-4">
+    <div class="jumbotron custom1">
+        <h3 class="display-4">Welcome To iProgrammer</h3>
+        <hr class="my-4">
+
+        <a class="btn btn-primary custom btn-lg" href="/blogs" role="button"><span>Blogs </span></a>
+    </div>
+    <hr class="featurette-divider">
+    <div class="row featurette">
+        <div class="col-md-7">
+            <h3 class="featurette-heading">About Me<span class="text-muted"> </span>
+            </h3>
+            <hr>
+            <p class="lead mb-4">
+                Hello Guys,
+                I am Sujay Shekhar,I'm a passionate self taught Python coder, I am also familiar with
+                JavaScript, Bootstrap, HTML, CSS. I Created this website Using <strong> Django </strong>which is an Awesome Python
+                Framework for Backend, And <b> JavaScript, Bootstrap </b> for Front-end.
+                I am passionate about my work. Because I love what I do, I have a steady source of motivation that
+                drives me to do my best.
+            </p>
+            <p> For More Details Follow Me on <strong>   Instagram, Twitter & Facebook &#x263B; &#8595; </strong> </p>
+            <!-- <a class="btn btn-outline-danger btn-lg btn-block" href="/contact" role="button">Contact Me</a> -->
+            <div class="my-4" style="float: right; margin-right: 20px;">
+                <a href="https://www.facebook.com/sujay.sinha.146" class="fa fa-facebook"></a>
+                <a href="https://www.instagram.com/sujay_sinha02/" class="fa fa-instagram"></a>
+                <a href="#" class="fa fa-twitter"></a>
+               
+
+            </div>
+
+            <hr>
+
+        </div>
+
+        <div class="col-md-5">
+            <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="400"
+                height="400" src="{% static 'common/jumbo.jpeg' %}">
+
+        </div>
+
+
+
+
+    </div>
+
+</div>
 
 {% endblock body %}
+{% block footer %}
+/about
+{% endblock footer %}
+
+{% block js %}
+
+
+
+{% endblock js %}

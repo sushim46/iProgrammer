@@ -1,7 +1,138 @@
 {% extends 'base.html' %}
 {% block title %} Home {% endblock title %} 
+{% block homeactive %} active
+{% endblock homeactive %}
+{% load static %}
+{% block css %}
+.btn:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+.custom {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #f4511e;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 28px;
+  padding: 20px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.custom span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.custom span:after {
+  content: ' \263B';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.custom:hover span {
+  padding-right: 25px;
+}
+
+.custom:hover span:after {
+  opacity: 1;
+  right: 0.25;
+}
+.bd-placeholder-img{
+  border: 1px solid #a83283;
+  shadow
+  padding: 5px;
+  -moz-box-shadow: 0px 6px 5px #ccc;
+  -webkit-box-shadow: 0px 6px 5px #ccc;
+  box-shadow: 0px 6px 5px #ccc;
+  -moz-border-radius:190px;
+  -webkit-border-radius:190px;
+  border-radius:190px;
+}
+{% endblock css %}
 
 {% block body %}
 
-{% endblock body %}
+  <section class="jumbotron text-center">
+    <div class="container">
+      <img src="{% static 'common/jumbo.jpeg'%}" class="bd-placeholder-img rounded-circle" width="140" height="140" >
+       <!-- <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"></rect><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>  -->
+      <h1 class="display-4"><span id="typed"></span></h1>
+      <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+      <p>
+        <a href="/blog" class="btn btn-danger custom mx-2 my-2"> <span> Blog </span></a>
+      
+        <a href="/contact" class="btn btn-primary custom  my-2"> <span> Contact</span></a>
+    </p>
+    </div>
+  
+  </section>
 
+<div class="container text-center my-3">
+
+
+  <section class="jumbotron text-center my-2">
+    <div class="container">
+      <h1>Recent Blogs </h1>
+      <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p>
+    </div>
+  </section>
+
+
+  <div class="row my-5">
+      <div class="col-lg-4">
+        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"></rect><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
+        <h2>Heading</h2>
+        <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
+        <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
+      </div><!-- /.col-lg-4 -->
+      <div class="col-lg-4">
+        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"></rect><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
+        <h2>Heading</h2>
+        <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
+        <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
+      </div><!-- /.col-lg-4 -->
+      <div class="col-lg-4">
+        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"></rect><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
+        <h2>Heading</h2>
+        <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+        <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
+      </div><!-- /.col-lg-4 -->
+    </div>
+
+</div>
+<div class="typed-strings"></div>
+{% endblock body %}
+{% block footer %}
+/
+{% endblock footer %}
+{% block social %}
+
+<a href="https://www.facebook.com/sujay.sinha.146" class="fa fa-facebook"></a>
+        <a href="https://www.instagram.com/sujay_sinha02/" class="fa fa-instagram">  </a>
+        <a href="#" class="fa fa-twitter">  </a>
+{% endblock social %}
+{% block js %}
+
+
+
+var typed = new Typed('#typed',{
+                    strings:["Welcome to iProgrammer","Coding Blogs","Tech Blogs","Web Development","Welcome to iProgrammer"],
+                    backSpeed: 15,
+                    smartBackspace: true,
+                    backDelay: 1200,
+                    startDelay: 1000,
+                    typeSpeed: 25,
+                    loop: false,
+
+                  });
+  
+{% endblock js %}

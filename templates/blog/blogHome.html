@@ -1,6 +1,81 @@
 {% extends 'base.html' %}
-{% block title %} Blog - Home {% endblock title %} 
+{% load static %}
+{% block title %} Blog - Home {% endblock title %}
+{% block blogactive %} active
+{% endblock blogactive %}
+{% block css %}
+.custom {
+    display: inline-block;
+    border-radius: 4px;
+    background-color: #f4511e;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 28px;
+    padding: 20px;
+    width: 200px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+  }
+  
+  .custom span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+  
+  .custom span:after {
+    content: ' \27B3 ';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+  }
+  
+  .custom:hover span {
+    padding-right: 25px;
+  }
+  
+  .custom:hover span:after {
+    opacity: 1;
+    right: 0.25;
+  }
+{% endblock css %}
 
 {% block body %}
+<div class="container my-3">
+<h1>iProgrammer Articles &#8595; </h1>
 
+<hr>
+{% for posts in allPosts %}
+ <div id="card" class="row no-gutters border rounded  overflow-hidden flex-md-row my-5 mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+          <strong class="d-inline-block text-primary">{{posts.category}}</strong>
+          <h2 class="mb-0">{{posts.title}}</h2>
+          <div class="mb-1 text-muted">{{posts.timestamp}} By : <a href="/about">{{posts.author}}</a></div>
+          <hr>
+          <p class="card-text mb-auto">{{posts.content|truncatechars:250}}</p>
+          <div>
+          <a href="/blog/{{posts.slug}}" role="button" class="btn btn-primary custom my-4"><span>Open</span></a>
+          </div>
+        </div>
+        <div class="col-auto d-none d-lg-block">
+        <img src="{% static 'common/jumbo.jpeg' %}" class="bd-placeholder-img rounded-circle abcd my-4 mx-4 b" width="200" height="200" >
+          {% comment %} <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg> {% endcomment %}
+        </div>
+      </div>
+{% endfor %}
+</div>
 {% endblock body %}
+{% block footer %}
+/blog
+{% endblock footer %}
+{% block social %}
+
+<a href="https://www.facebook.com/sujay.sinha.146" class="fa fa-facebook"></a>
+        <a href="https://www.instagram.com/sujay_sinha02/" class="fa fa-instagram">  </a>
+        <a href="#" class="fa fa-twitter">  </a>
+{% endblock social %}

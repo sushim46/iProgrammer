@@ -1,6 +1,18 @@
 {% extends 'base.html' %}
 {% block title %} Blog - Post {% endblock title %} 
-
+{% block blogactive %} active
+{% endblock blogactive %}
 {% block body %}
 
 {% endblock body %}
+{% block footer %}
+{% for posts in allPosts %}
+{{posts.slug}}
+{% endfor %}
+{% endblock footer %}
+{% block social %}
+
+<a href="https://www.facebook.com/sujay.sinha.146" class="fa fa-facebook"></a>
+        <a href="https://www.instagram.com/sujay_sinha02/" class="fa fa-instagram">  </a>
+        <a href="#" class="fa fa-twitter">  </a>
+{% endblock social %}
