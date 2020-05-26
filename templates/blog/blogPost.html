@@ -3,16 +3,25 @@
 {% block blogactive %} active
 {% endblock blogactive %}
 {% block body %}
+<div class="container">
+<div class="blog-post">
+        <h2 class="blog-post-title">{{post.title}}</h2>
+        <p class="blog-post-meta">{{post.timestamp}} by <a href="/about">{{post.author}}</a></p>
 
+        <p>{{post.content}}</p>
+        <hr>
+      </div>
+
+</div>
 {% endblock body %}
 {% block footer %}
-{% for posts in allPosts %}
-{{posts.slug}}
+<!-- {% for posts in allPosts %}
+{{posts.slug}} -->
 {% endfor %}
 {% endblock footer %}
 {% block social %}
 
 <a href="https://www.facebook.com/sujay.sinha.146" class="fa fa-facebook"></a>
         <a href="https://www.instagram.com/sujay_sinha02/" class="fa fa-instagram">  </a>
-        <a href="#" class="fa fa-twitter">  </a>
+        <a href="https://twitter.com/_sujayshekhar?fbclid=IwAR2IvbN5gt3VUDiLDasKszGDAYp3SWLMnRn65hXfGo_ohwFDAplRx3BE0_Q" class="fa fa-twitter">  </a>
 {% endblock social %}

@@ -17,12 +17,29 @@
 <style>
   .brandLogo{
     max-width : 150px;
+    margin-bottom:8px;
   }
-  .navbar{
-    background-color:#eb1c68;
-  }  
 
+.bg-dark {
+    background-color: #283259!important;
+} 
+.navbar-dark .navbar-nav .active>.nav-link, .navbar-dark .navbar-nav .nav-link.active, .navbar-dark .navbar-nav .nav-link.show, .navbar-dark .navbar-nav .show>.nav-link {
+    color: rgb(165, 238, 30);
+}
+.nav-link {
+    display: block;
+    padding: 1rem .5rem;
+} 
+.navbar-dark .navbar-nav .nav-link {
+  color: rgba(255,255,255,.5);
+  font-weight:800;
+  margin-right:8px;
+  letter-spacing:3.5px;
+  font-size:18px;
   
+  
+}  
+
 
 .fa {
 padding: 5px;
@@ -55,9 +72,9 @@ color: white;
   </head>
   
   <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="/">
-        <img  class="brandLogo" src="{% static 'common/iProg.png'%}" alt="iProgrammer">
+        <img  class="brandLogo" src="{% static 'common/iProgrammer.png'%}" alt="iProgrammer">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -70,7 +87,7 @@ color: white;
             </li>
 
             <li class="nav-item {% block blogactive %}{% endblock blogactive %}">
-              <a class="nav-link" href="/blog">Blog</a>
+              <a class="nav-link"  href="/blog">Blog</a>
             </li>
 
 
@@ -83,10 +100,11 @@ color: white;
             </li>
             
           </ul>
-          <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
+          <form method="get" action="/search" class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2"  style="border-radius:200px;" type="search" placeholder="Search" aria-label="Search" name="search" id="search">
+            <button class="btn btn-outline-warning my-2 my-sm-0"  style="border-radius:200px;" type="submit">Search</button>
           </form>
+          <a href="/admin" role="button" target="_blank" class="btn btn-outline-success m-2 " style="border-radius:200px;">Admin Pannel</a>
         </div>
       </nav>
     

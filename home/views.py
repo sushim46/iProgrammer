@@ -5,7 +5,10 @@ from blog.models import Post
 # Create your views here.
 def home(request):
     featured = Post.objects.all()
-    mypost = {'featured':featured}
+    print(featured)
+    new = featured[0::3]
+    print(new)
+    mypost = {'featured':new,}
     return render(request, 'home/home.html',mypost)
 
 def contact(request):
@@ -27,3 +30,8 @@ def contact(request):
 
 def about(request):
     return render(request, 'home/about.html')
+
+def search(request):
+    allPosts
+    params = {'allPosts':allPosts}
+    return render(request,'home/search.html')
