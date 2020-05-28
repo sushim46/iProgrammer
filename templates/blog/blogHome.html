@@ -10,6 +10,7 @@
     background-color: #f4511e;
     border: none;
     color: #FFFFFF;
+    justify-content:center;
     text-align: center;
     font-size: 28px;
     padding: 20px;
@@ -39,36 +40,65 @@
     padding-right: 25px;
   }
   
-  .custom:hover span:after {
+  .custom:hover span.readdoc:after {
     opacity: 1;
     right: 0.25;
   }
+.centring{
+  display:flex;
+  justify-content:center;
+  text-align:center;
+
+}
+.featurette{
+ 
+}
+.text{
+  color:blue;
+}
+
+h2 {
+  color:#7a4309 !important;
+}
+.for{
+  justify-content:center;
+  
+}
+
+
 {% endblock css %}
 
 {% block body %}
+<section class="jumbotron my-4 mx-2 mx-xs-2 mx-sm-2  text-center"
+  style="border-radius: 0px;background-image: url('https://source.unsplash.com/1600x900/?blogs,technology'); background-repeat: no-repeat;background-attachment:fixed; background-size:cover; background-blend-mode: overlay;  ">
 <div class="container my-3">
-<h1>iProgrammer Articles &#8595; </h1>
+<h1><strong>iProgrammer All Articles &#8595; </strong> </h1>
 
-<hr>
+
 {% for posts in allPosts %}
- <div id="card" class="row no-gutters border rounded  overflow-hidden flex-md-row my-5 mb-4 shadow-sm h-md-250 position-relative">
-        <div class="col p-4 d-flex flex-column position-static">
-          <strong class="d-inline-block text-primary">{{posts.category}}</strong>
-          <h2 class="mb-0">{{posts.title}}</h2>
-          <div class="mb-1 text-muted">{{posts.timestamp}} By : <a href="/about">{{posts.author}}</a></div>
-          <hr>
-          <p class="card-text mb-auto">{{posts.content|truncatechars:250}}</p>
-          <div>
-          <a href="/blog/{{posts.slug}}"  class="btn btn-primary custom my-4"><span>Read Full</span></a>
-        </div>
-        </div>
-        <div class="col-auto d-none d-lg-block">
-        <img src="{% static 'common/jumbo.jpeg' %}" class="bd-placeholder-img rounded-circle abcd my-4 mx-4 b" width="200" height="200" >
-          {% comment %} <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg> {% endcomment %}
-        </div>
+
+ <div class="container-fluid my-2">
+   <hr style="border: 2px rgb(212, 161, 20);border-style: inset; ">
+  <div class="row featurette  my-10">
+    <div class="col-md-7">
+      <h5 class="text my-2"><strong>{{posts.category}}</strong></h5>
+      <h2 class="featurette-heading my-2">{{posts.title}}<span class="text-muted"><b> &#x274D; </b> By : {{posts.author}} </span></h2>
+      <p><small>{{posts.timestamp}}</small></p>
+      <p class="lead">{{posts.content|truncatechars:300}}...</p>
+      
+    </div>
+    <div class="col-md-5 centring">
+      <img src="/media/{{posts.thumbnail}}" class="bd-placeholder-img rounded-circle abcd " width="300" height="300" >
+    </div>
+  </div>
+  <div class="for">
+    <a href="/blog/{{posts.slug}}"  class="btn btn-primary custom my-4"><span class="readdoc">Read Full</span></a>
+  </div>
       </div>
+
 {% endfor %}
 </div>
+</section>
 {% endblock body %}
 {% block footer %}
 /blog

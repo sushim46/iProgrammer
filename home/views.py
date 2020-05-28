@@ -4,11 +4,10 @@ from django.contrib import messages
 from blog.models import Post
 # Create your views here.
 def home(request):
-    featured = Post.objects.all()
-    print(featured)
-    new = featured[0::3]
-    print(new)
-    mypost = {'featured':new,}
+    new = Post.objects.all()
+    recent = Post.objects.filter(published=True).order_by('-timestamp')[0:6]   
+    longer = Post.objects.filter(longer_feature=True)
+    mypost = {'featured':recent, 'featured_two':longer}
     return render(request, 'home/home.html',mypost)
 
 def contact(request):

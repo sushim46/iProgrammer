@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!--  Typed.Js  -->
      <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typed.js"></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-purple.css">  
     <title>{% block title %} {% endblock title %}</title>
     
 <style>
@@ -19,7 +21,9 @@
     max-width : 150px;
     margin-bottom:8px;
   }
-
+.navbar{
+  border-radius:0px
+}
 .bg-dark {
     background-color: #283259!important;
 } 
@@ -29,14 +33,14 @@
 .nav-link {
     display: block;
     padding: 1rem .5rem;
+    
 } 
 .navbar-dark .navbar-nav .nav-link {
   color: rgba(255,255,255,.5);
   font-weight:800;
-  margin-right:8px;
+  margin-right:6px;
   letter-spacing:3.5px;
   font-size:18px;
-  
   
 }  
 
@@ -67,12 +71,34 @@ color: white;
 background: #a83283;
 color: white;
 }
+.foot{
+  
+  background-color:#283259!important;
+  justify-content:center;
+  display:flex;
+  vertical-align:center 
+  text-align:center;
+  color:white;
+  border-radius:50px;
+  
+}
+.fott{
+  justify-content:center;
+  text-align:center;
+  display: flex;
+  vertical-align:center;
+}
+.my-sm-0{
+  margin-top:1px;
+}
+
 </style>
 <style>{% block css %} {% endblock css %}</style>
   </head>
   
   <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
         <a class="navbar-brand" href="/">
         <img  class="brandLogo" src="{% static 'common/iProgrammer.png'%}" alt="iProgrammer">
         </a>
@@ -101,11 +127,12 @@ color: white;
             
           </ul>
           <form method="get" action="/search" class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2"  style="border-radius:200px;" type="search" placeholder="Search" aria-label="Search" name="search" id="search">
-            <button class="btn btn-outline-warning my-2 my-sm-0"  style="border-radius:200px;" type="submit">Search</button>
+            <input class="form-control my-sm-4 mr-sm-2"  style="border-radius:200px;" type="search" placeholder="Search" aria-label="Search" name="search" id="search">
+            <button class="btn btn-outline-warning  my-2 my-sm-1 my-xs-3"  style="border-radius:200px;" type="submit">Search</button>
           </form>
-          <a href="/admin" role="button" target="_blank" class="btn btn-outline-success m-2 " style="border-radius:200px;">Admin Pannel</a>
+          
         </div>
+</div>
       </nav>
     
       {% for message in messages %}
@@ -119,13 +146,16 @@ color: white;
 {% endfor %}
       {% block body %}
       {% endblock body %}
+    <section class="jumbotron my-4 mx-2 mx-xs-2 mx-sm-2 text-center" style="border-radius: 50px;">
+    <section class="container my-4 my-xs-2 my-sm-2 foot ">
+    <footer class="container fott my-xs-0  my-5">
     
-    <footer class="container my-5">
-    <hr>
-    <p class="float-right"><a href="{% block footer %} {% endblock footer %}">Back to top</a></p>
-    <p>© 2020-2021 iProgrammer <a href="/">Home</a> | <a href="/blog">Blog</a> {% block social %}
+    <p class="my-xs-5  mx-2"><a class=" my-2 mx-2" href="{% block footer %} {% endblock footer %}">Back to top</a></p>
+    <p class="my-xs-5  mx-2">© 2020-2021 iProgrammer <a href="/">Home</a> | <a href="/blog">Blog</a> {% block social %}
      {% endblock social %}</p>
   </footer>
+  </section>
+  </section>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

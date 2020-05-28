@@ -4,6 +4,9 @@
 {% endblock homeactive %}
 {% load static %}
 {% block css %}
+.text-center{
+text-align:center !important;
+}
 .btn:hover {
 box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
@@ -12,6 +15,7 @@ display: inline-block;
 border-radius: 4px;
 background-color: #f4511e;
 border: none;
+border-radius:50px;
 color: #FFFFFF;
 text-align: center;
 font-size: 28px;
@@ -45,6 +49,7 @@ padding-right: 25px;
 .custom:hover span:after {
 opacity: 1;
 right: 0.25;
+
 }
 .bd-placeholder-img{
 border: 5px solid #283259;
@@ -57,21 +62,35 @@ box-shadow: 0px 6px 5px #ccc;
 -webkit-border-radius:190px;
 border-radius:190px;
 }
+.rounded-circle{
+cursor:pointer;
+}
+.typingJS{
+font-size:2.9rem;
+}
+.sizefix{
+  height:100%;
+  width: 100%;
+  
+}
 
 
 {% endblock css %}
 
 {% block body %}
 
-<section class="jumbotron text-center">
-  <div class="container">
+<section class="jumbotron my-4 mx-2 mx-xs-2 mx-sm-2 text-center"
+  style="border-radius: 0px;border:0px solid  #283259!important; background-image: url('/static/common/carouselthree.jpg'); background-size: cover; background-blend-mode: overlay;">
+  <div class="container w3-theme-l4" style="border:1px solid #283259!important; border-radius: 50px;">
     <div class="view  zoom">
-      <img src="{% static 'common/jumbo.jpeg'%}" class="bd-placeholder-img img-fluid rounded-circle" width="140"
-        height="140">
-      <!-- <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"></rect><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>  -->
+      <a href="/about"><img src="{% static 'common/jumbo.jpeg'%}"
+          class="bd-placeholder-img img-fluid my-2 rounded-circle" width="140" height="140"></a>
     </div>
-    <h1 class="display-4"><b><span id="typed"></b></span></h1>
-    <p class="lead">Tech Blogs, Coding Blogs, Web Development, Python, Django, Flask, JavaScript and Much More</p>
+    <div>
+      <h1 class="display-4 typingJS"><b><span id="typed"></b></span></h1>
+    </div>
+    <p class="lead">iProgrammer a blogging Website wTech Blogs, Coding Blogs, Web Development, Python, Django, Flask,
+      JavaScript and Much More</p>
     <p>
       <a href="/blog" class="btn btn-warning custom mx-2 my-2"> <span> Blog </span></a>
 
@@ -81,61 +100,83 @@ border-radius:190px;
 
 </section>
 
-<div class="container text-center my-3">
 
+<section class="jumbotron my-4 mx-2 mx-xs-2 mx-sm-2  text-center"
+  style="border-radius: 0px;background-image: url('https://source.unsplash.com/1600x900/?blogs,technology'); background-repeat: no-repeat;background-attachment:fixed; background-size:cover; background-blend-mode: overlay;  ">
+  <div class="container  text-center " style="border-radius: 50px; border:1px solid #283259!important; ">
+    {%for item in featured_two%}
+    <div class="nav-scroller py-1 mb-1"">
 
-  <section class="jumbotron myclass text-center my-2"
-    style="background-color: rgb(241, 224, 227), 247, 247) ; border-radius: 30px;">
-    <div class="container">
-      <h1>Recent Blogs </h1>
-      <p class="lead">Here are Some Recent Blog Post. Sign Up with iProgrammer to Stay Updated with Latest Tech Blogs
-      </p>
-    </div>
-  </section>
-
-  
-  <div class="row  my-5">
-    
-    {%for post in featured%}
-    <div class="col-lg-4 my-4">
-      <img src="{% static 'common/carouselfive.jpg'%}" class="bd-placeholder-img rounded-circle" width="140"
-        height="140" >
-      <h2>{{post.category|truncatechars:15}}</h2>
-      <div class="container">
-        <p style="text-align: center;">{{post.title|truncatechars:100}}</p>
-      </div>
-      <!-- <p> -->
-        <div class="mydiv">
-
-        <a class="btn btn-secondary" href="/blog/{{post.slug}}" role="button">View details »</a>
-      </div>
-      <!-- </p> -->
-
-    </div>
-    
-    <!-- /.col-lg-4 -->
-
-    {%if forloop.counter|divisibleby:3 %}
+    <nav class=" nav d-flex justify-content-between">
+     
+      <a class="p-3" href="#"> <strong>Coding</strong></a>
+      <a class="p-3" href="#"> <strong>Web Development</strong></a>
+      <a class="p-3" href="#"> <strong>Technology</strong></a>
+      <a class="p-3" href="#"> <strong>Latest Technology</strong></a>
    
+      </nav>
+    </div>
+    <div class="jumbotron my-3 longer-featured-post jumbotron-fluid"
+      style="background-image: url('/static/common/carouselone.jpg'); border-radius: 30px; ">
+      <div class="container long">
+        <h1 class="display-4" style="color: #ff0000;font-weight: 900;">{{item.title}}</h1>
+        <p class="lead long" style="color:rgb(255, 255, 255);">{{item.content|truncatechars:200}}</p>
+        <div>
+          <a class="btn btn-danger custom" href="/blog/{{item.slug}}" role="button"><span>Read</span></a>
+        </div>
+      </div>
+    </div>
 
-  </div>
-  {%endif%}
     {%endfor%}
-  <div class="container jumbotron jumbotron-fluid" style="background-image: url('https://source.unsplash.com/1600x900/?technology,coding');background-blend-mode: darken; border-radius: 30px;">
-    <div class="container">
 
+    <section class="jumbotron  myclass text-center my-4" style=" border-radius: 30px;">
+      <div class="container">
+        <h1>Recent Blogs </h1>
+        <hr style="border: 2px darkblue;border-style: inset; ">
+        <p class="lead" style="font-size: 1.5rem;">Here are Some Recent Blog Post. Sign Up with iProgrammer to Stay
+          Updated with Latest Tech Blogs
+        </p>
+      </div>
+    </section>
+
+
+    <div class="row">
+    {% for posts in featured %}
+    <div class="col-md-6">
+      <div class="row sizefix no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+          <strong class="d-inline-block mb-2 text-success">{{posts.category}}</strong>
+          <h3 class="mb-0">{{posts.title}}</h3>
+          <div class="mb-1 text-muted">Nov 11</div>
+          <p class="mb-auto">{{posts.content|truncatechars:150}}
+          </p>
+          <a href="/blog/{{posts.slug}}" class="btn btn-primary" role="button" >Continue reading</a>
+        </div>
+        <div class="col-auto d-none d-lg-block" style="justify-content: center ; text-align: center;">
+          <img src="/media/{{posts.thumbnail}}" class="bd-placeholder-img my-5 text-center rounded-circle" width="200" height="200" style="justify-content: center; text-align: center center;" >
+        </div>
+      </div>
+    </div>
+    {% if forloop.counter|divisibleby:2 %}
+  </div> <div class="row">
+    {% endif %}
+    {% endfor %}
+  </div>
+    <div class="container  jumbotron jumbotron-fluid"
+      style="background-image: url('https://source.unsplash.com/1600x900/?python,programmers');background-blend-mode: darken; border-radius: 30px;">
       <p>
         <a href="/blog" class="btn btn-danger custom mx-2 my-2"> <span> Blog </span></a>
 
         <a href="/contact" class="btn btn-primary custom  my-2"> <span> Contact</span></a>
       </p>
-    </div>
-  </div>
 
-  
-   
+    </div>
+
+
+
   </div>
-</div>
+  </div>
+</section>
 <div class="typed-strings"></div>
 {% endblock body %}
 {% block footer %}
@@ -145,14 +186,15 @@ border-radius:190px;
 
 <a href="https://www.facebook.com/sujay.sinha.146" class="fa fa-facebook"></a>
 <a href="https://www.instagram.com/sujay_sinha02/" class="fa fa-instagram"> </a>
-<a href="https://twitter.com/_sujayshekhar?fbclid=IwAR2IvbN5gt3VUDiLDasKszGDAYp3SWLMnRn65hXfGo_ohwFDAplRx3BE0_Q" class="fa fa-twitter"> </a>
+<a href="https://twitter.com/_sujayshekhar?fbclid=IwAR2IvbN5gt3VUDiLDasKszGDAYp3SWLMnRn65hXfGo_ohwFDAplRx3BE0_Q"
+  class="fa fa-twitter"> </a>
 {% endblock social %}
 {% block js %}
 
 
 
 var typed = new Typed('#typed',{
-strings:["Welcome to iProgrammer","Coding Blogs","Tech Blogs","Web Development","Welcome to iProgrammer"],
+strings:["Welcome To iProgrammer","Coding Blogs","Tech Blogs","Welcome To iProgrammer"],
 backSpeed: 15,
 smartBackspace: true,
 backDelay: 1200,
